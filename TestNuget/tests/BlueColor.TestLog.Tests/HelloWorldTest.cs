@@ -10,7 +10,7 @@ namespace BlueColor.TestLog.Tests
         {
             string reuslt = HelloWorld.SayHello("BlueLover");
 
-            Assert.AreEqual(reuslt, "Hello,BlueLover!");
+            Assert.AreEqual("Hello,BlueLover!", reuslt);
         }
     }
 }
