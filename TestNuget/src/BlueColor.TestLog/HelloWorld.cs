@@ -13,7 +13,7 @@ namespace BlueColor.TestLog
         /// <param name="nickName">昵称</param>
         public static string SayHello(string nickName)
         {
-            return $"Hello,{nickName}!";
+            return $"你好,{nickName}!";
         }
     }
 }

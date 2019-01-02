@@ -6,7 +6,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var result = BlueColor.TestLog.HelloWorld.SayHello("世界");
+            Console.WriteLine(result);
         }
     }
 }
