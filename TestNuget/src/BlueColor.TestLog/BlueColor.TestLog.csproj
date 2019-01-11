@@ -4,17 +4,27 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>0.0.2.0</AssemblyVersion>
-    <Description>BlueColor.TestLog 说明</Description>
+    <AssemblyVersion>0.0.3.0</AssemblyVersion>
+    <Description>Add "BcLog.GetLogger" Static Method（返回日志记录器-指定日志文件名）</Description>
     <Authors>BlueColor</Authors>
     <Copyright>214909012@qq.com</Copyright>
     <PackageReleaseNotes>BlueColor.TestLog 发行说明</PackageReleaseNotes>
-    <PackageTags>BlueColor Bc Test</PackageTags>
+    <PackageTags>BlueColor Bc Test Log</PackageTags>
     <PackageProjectUrl>https://github.com/CustomFrame/BlueColor</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/CustomFrame/BlueColor/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <NeutralLanguage>zh-CN</NeutralLanguage>
-    <FileVersion>0.0.2.0</FileVersion>
+    <FileVersion>0.0.3.0</FileVersion>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\BlueLover\source\repos\BlueColor\TestNuget\src\BlueColor.TestLog\BlueColor.TestLog.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.5.11" />
+  </ItemGroup>
 
 </Project>

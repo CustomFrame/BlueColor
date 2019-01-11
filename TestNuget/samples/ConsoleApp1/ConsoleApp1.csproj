@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlueColor.TestLog" Version="0.0.1" />
+    <Compile Remove="bin\Debug\netcoreapp2.1\logs\2019-01-11\**" />
+    <EmbeddedResource Remove="bin\Debug\netcoreapp2.1\logs\2019-01-11\**" />
+    <None Remove="bin\Debug\netcoreapp2.1\logs\2019-01-11\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlueColor.TestLog" Version="0.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp2.1\logs\" />
   </ItemGroup>
 
 </Project>

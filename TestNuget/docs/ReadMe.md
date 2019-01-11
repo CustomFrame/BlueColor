@@ -1,4 +1,6 @@
-﻿using System;
+eg:
+```C#
+using System;
 
 namespace ConsoleApp1
 {
@@ -14,3 +16,12 @@ namespace ConsoleApp1
         }
     }
 }
+```
+Console
+```text 
+你好,世界!
+```
+HelloLogFile.Info.log
+```text
+2019-01-11 21:05:34.0027|INFO|HelloLogFile|你好,世界!
+```

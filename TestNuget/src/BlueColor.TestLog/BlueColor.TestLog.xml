@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlueColor.TestLog</name>
+    </assembly>
+    <members>
+        <member name="T:BlueColor.TestLog.BcLog">
+            <summary>
+            Bc日志
+            </summary>
+        </member>
+        <member name="M:BlueColor.TestLog.BcLog.GetLogger(System.String)">
+            <summary>
+            返回日志记录器
+            </summary>
+            <param name="logFileName">日志文件名</param>
+            <returns></returns>
+        </member>
+        <member name="T:BlueColor.TestLog.HelloWorld">
+            <summary>
+            HelloWorld
+            </summary>
+        </member>
+        <member name="M:BlueColor.TestLog.HelloWorld.SayHello(System.String)">
+            <summary>
+            问候
+            </summary>
+            <param name="nickName">昵称</param>
+        </member>
+    </members>
+</doc>

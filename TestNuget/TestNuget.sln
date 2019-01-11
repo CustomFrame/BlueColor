@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{543C02AB-E92E-46CF-BE21-22089F2BD0AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{3A6E4425-088B-4732-80CB-17A0AE2115F4}"
+	ProjectSection(SolutionItems) = preProject
+		docs\ReadMe.md = docs\ReadMe.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7AD19B91-7ABE-400C-AB28-A9AF071BBEFF}"
 EndProject
@@ -15,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{78EA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueColor.TestLog", "src\BlueColor.TestLog\BlueColor.TestLog.csproj", "{D81FC37D-162E-4B97-A8D3-CDEA9A23CB7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "samples\ConsoleApp1\ConsoleApp1.csproj", "{E97B5D35-47C2-4E23-939B-15437FD7A243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "samples\ConsoleApp1\ConsoleApp1.csproj", "{E97B5D35-47C2-4E23-939B-15437FD7A243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueColor.TestLog.Tests", "tests\BlueColor.TestLog.Tests\BlueColor.TestLog.Tests.csproj", "{CD768AE7-9D09-4C99-9CE6-50CE85B3ABC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueColor.TestLog.Tests", "tests\BlueColor.TestLog.Tests\BlueColor.TestLog.Tests.csproj", "{CD768AE7-9D09-4C99-9CE6-50CE85B3ABC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
