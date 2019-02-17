@@ -1,6 +1,6 @@
 ﻿using NPOI.SS.UserModel;
 
-namespace BlueColor.NPOIExtensions.Extensions
+namespace BlueColor.NPOIExtensions
 {
     /// <summary>
     /// IRow 扩展

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace BlueColor.NPOIExtensions.Extensions
+namespace BlueColor.NPOIExtensions
 {
     /// <summary>
     /// ISheet 扩展

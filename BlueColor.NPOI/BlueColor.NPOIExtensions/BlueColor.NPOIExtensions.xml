@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlueColor.NPOIExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:BlueColor.NPOIExtensions.ICellStyleExtensions">
+            <summary>
+            ICellStyle 扩展
+            </summary>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ICellStyleExtensions.setDataFormat(NPOI.SS.UserModel.ICellStyle,System.Int16)">
+            <summary>
+            设置 单元格 数据格式
+            默认
+            </summary>
+            <param name="ICellStyle">单元格样式</param>
+            <param name="dataFormat">HSSFDataFormat.GetBuiltinFormat("@")</param>
+            <returns></returns>
+        </member>
+        <member name="T:BlueColor.NPOIExtensions.IRowExtensions">
+            <summary>
+            IRow 扩展
+            </summary>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.IRowExtensions.GetCellValue(NPOI.SS.UserModel.IRow,System.Int32)">
+            <summary>
+            获得单元格值
+            </summary>
+            <param name="row">行</param>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="T:BlueColor.NPOIExtensions.ISheetExtensions">
+            <summary>
+            ISheet 扩展
+            </summary>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddSingleRowHeader(NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.String},System.Int32,NPOI.SS.UserModel.ICellStyle)">
+            <summary>
+            添加单行标题
+            (单行标题无合并单元格情况)
+            </summary>
+            <param name="sheet">工作表</param>
+            <param name="columnNames">列名-List</param>
+            <param name="startRowNum">开始行号</param>
+            <param name="cellStyle">单元格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddSingleRowContent(NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.String},System.Int32,NPOI.SS.UserModel.ICellStyle)">
+            <summary>
+            添加单行内容
+            </summary>
+            <param name="sheet">工作表</param>
+            <param name="singleRowCells">单行单元格-List</param>
+            <param name="startRowNum">开始行号</param>
+            <param name="cellStyle">单元格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddSingleRowContentWithCellStyle(NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{BlueColor.NPOIExtensions.RowCell},System.Int32)">
+            <summary>
+            添加单行内容
+            </summary>
+            <param name="sheet">工作表</param>
+            <param name="singleRowCells">单行单元格-List</param>
+            <param name="startRowNum">开始行号</param>
+            <param name="cellStyle">单元格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddMultipleRowsContent(NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.String},System.Data.DataTable,System.Int32,NPOI.SS.UserModel.ICellStyle)">
+            <summary>
+            添加多行内容
+            </summary>
+            <param name="sheet">工作表</param>
+            <param name="columnNames">列名-List</param>
+            <param name="dataTable">数据表</param>
+            <param name="startRowNum">开始行号</param>
+            <param name="cellStyle">单元格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddTitleRowByPropertyCellConfig(NPOI.SS.UserModel.ISheet,BlueColor.NPOIExtensions.PropertyCellConfigList,System.Int32,System.Collections.Generic.Dictionary{System.Int32,NPOI.SS.UserModel.ICellStyle}@)">
+            <summary>
+            添加标题行-输出列样式
+            (按列-属性单元格配置)
+            </summary>
+            <param name="sheet">工作表</param>
+            <param name="propertyCellConfigs">属性单元格配置-List</param>
+            <param name="titleRowNum">标题行号</param>
+            <param name="cellStyles">输出列样式</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddMultipleRowsByPropertyCellConfig(NPOI.SS.UserModel.ISheet,BlueColor.NPOIExtensions.PropertyCellConfigList,System.Data.DataTable,System.Int32)">
+            <summary>
+            添加多行
+            (按列-属性单元格配置)
+            </summary>
+            <param name="sheet">工作表</param>
+            <param name="propertyCellConfigs">属性单元格配置-List</param>
+            <param name="dataTable">数据表</param>
+            <param name="startRowNum">开始行号</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.MergeCellByPropertyCellConfig(NPOI.SS.UserModel.ISheet,BlueColor.NPOIExtensions.PropertyCellConfigList,System.Int32,System.Int32)">
+            <summary>
+            合并单元格
+            (按列-属性单元格配置)
+            </summary>
+            <param name="sheet">工作表</param>
+            <param name="propertyCellConfigs">属性单元格配置-List</param>
+            <param name="firstRow">开始行号</param>
+            <param name="lastRow">结束行号</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddFooter(NPOI.SS.UserModel.ISheet)">
+            <summary>
+            ISheet
+            添加合计行
+            </summary>
+            <param name="sheet"></param>
+        </member>
+        <member name="T:BlueColor.NPOIExtensions.IWorkbookExtensions">
+            <summary>
+            IWorkbook 扩展
+            </summary>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.genHeaderCellStyle(NPOI.SS.UserModel.IWorkbook)">
+            <summary>
+            生成 标题单元格样式
+            默认
+            </summary>
+            <param name="workbook">工作簿</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.genContentCellStyle(NPOI.SS.UserModel.IWorkbook)">
+            <summary>
+            生成 内容单元格样式
+            默认
+            </summary>
+            <param name="workbook">工作簿</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.genFontBold(NPOI.SS.UserModel.IWorkbook)">
+            <summary>
+            生成 字体-粗体
+            </summary>
+            <param name="workbook">工作簿</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.genFontNormal(NPOI.SS.UserModel.IWorkbook)">
+            <summary>
+            生成 字体-正常值
+            </summary>
+            <param name="workbook">工作簿</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.genFontBoldWeight(NPOI.SS.UserModel.IWorkbook,NPOI.SS.UserModel.FontBoldWeight)">
+            <summary>
+            生成 字体-指定粗细
+            </summary>
+            <param name="workbook">工作簿</param>
+            <param name="fontBoldWeight">字体粗体重量</param>
+            <returns></returns>
+        </member>
+        <member name="T:BlueColor.NPOIExtensions.PropertyCellConfig">
+            <summary>
+            属性单元格配置
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.PropertyName">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.ColumnIndex">
+            <summary>
+            列索引（不能重复）
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.ConditionColumn">
+            <summary>
+            条件列（最多只能有一列）
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.AllowMerge">
+            <summary>
+            允许合并(ConditionColumn存在时，必须至少有一列AllowMerge)
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.IsIgnored">
+            <summary>
+            被忽略了
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.DataFormat">
+            <summary>
+            数据格式
+            </summary>
+        </member>
+        <member name="T:BlueColor.NPOIExtensions.PropertyCellConfigList">
+            <summary>
+            属性单元格配置List
+            </summary>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.PropertyCellConfigList.ValidateError">
+            <summary>
+            检验错误
+            </summary>
+        </member>
+        <member name="T:BlueColor.NPOIExtensions.RowCell">
+            <summary>
+            行单元格
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.RowCell.CellValue">
+            <summary>
+            单元格值
+            </summary>
+        </member>
+        <member name="P:BlueColor.NPOIExtensions.RowCell.CellStyle">
+            <summary>
+            单元格样式
+            </summary>
+        </member>
+    </members>
+</doc>

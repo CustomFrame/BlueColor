@@ -9,6 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueColor.NPOIExtensions.Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueColor.NPOIExtensions.Tests", "BlueColor.NPOIExtensions.Tests\BlueColor.NPOIExtensions.Tests.csproj", "{545810B4-CAC9-4C0C-A05E-5A896BF98566}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{C0A4E4AB-F18B-4BCB-B3F2-24486213610C}"
+	ProjectSection(SolutionItems) = preProject
+		docs\ReadMe.md = docs\ReadMe.md
+		docs\test.png = docs\test.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{3E71E6F5-5ADC-4480-859F-E7D40B932F21}"
+	ProjectSection(SolutionItems) = preProject
+		build\Nuget包推送.txt = build\Nuget包推送.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

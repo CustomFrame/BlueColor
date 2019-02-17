@@ -1,4 +1,6 @@
-﻿using NPOI.HSSF.UserModel;
+eg:
+```C#
+using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System;
 using System.Data;
@@ -110,3 +112,6 @@ namespace BlueColor.NPOIExtensions.Samples
         }
     }
 }
+```
+test.xlsx
+![Alt text](test.png)`

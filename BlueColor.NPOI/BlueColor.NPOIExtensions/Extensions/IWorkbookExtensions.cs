@@ -1,7 +1,7 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 
-namespace BlueColor.NPOIExtensions.Extensions
+namespace BlueColor.NPOIExtensions
 {
     /// <summary>
     /// IWorkbook 扩展

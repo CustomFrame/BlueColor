@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\Debug\netcoreapp2.2\**" />
+    <EmbeddedResource Remove="bin\Debug\netcoreapp2.2\**" />
+    <None Remove="bin\Debug\netcoreapp2.2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BlueColor.NPOIExtensions\BlueColor.NPOIExtensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
 
 </Project>

@@ -2,10 +2,37 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Company>BlueColor</Company>
+    <Authors>BlueColor</Authors>
+    <Copyright>214909012@qq.com</Copyright>
+    <PackageTags>BlueColor Bc NPOI Extensions</PackageTags>
+    <PackageProjectUrl>https://github.com/CustomFrame/BlueColor</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/CustomFrame/BlueColor/blob/master/LICENSE</PackageLicenseUrl>
+    <Description>指定条件，合并特定列单元格，生成 Excel 文件</Description>
+    <PackageReleaseNotes>方法：AddMultipleRowsByPropertyCellConfig(this ISheet sheet, PropertyCellConfigList propertyCellConfigs, DataTable dataTable, int startRowNum = 0)
+
+属性对应单元格配置：PropertyCellConfig.cs</PackageReleaseNotes>
+    <NeutralLanguage>zh-CN</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\BlueLover\Source\Repos\BlueColor\BlueColor.NPOI\BlueColor.NPOIExtensions\BlueColor.NPOIExtensions.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\Debug\netstandard2.0\**" />
+    <EmbeddedResource Remove="bin\Debug\netstandard2.0\**" />
+    <None Remove="bin\Debug\netstandard2.0\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="NPOI" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
 
 </Project>
