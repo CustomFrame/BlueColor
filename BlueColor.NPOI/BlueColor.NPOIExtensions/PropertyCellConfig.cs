@@ -12,7 +12,7 @@ namespace BlueColor.NPOIExtensions
         /// <summary>
         /// 属性类型
         /// </summary>
-        public Type PropertyType { get; set; } = typeof(string);
+        public Type PropertyType { get; set; } = typeof(object);
 
         /// <summary>
         /// 属性名称

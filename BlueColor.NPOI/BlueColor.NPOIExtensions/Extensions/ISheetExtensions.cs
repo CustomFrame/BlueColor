@@ -201,11 +201,11 @@ namespace BlueColor.NPOIExtensions
                         {
                             cell.SetCellValue(Convert.ToDouble(value));
                         }
-                        else if (value is IFormattable)
-                        {
-                            var fv = value as IFormattable;
-                            cell.SetCellValue(fv.ToString(config.DataFormat, CultureInfo.CurrentCulture));
-                        }
+                        //else if (value is IFormattable)
+                        //{
+                        //    var fv = value as IFormattable;
+                        //    cell.SetCellValue(fv.ToString(config.DataFormat, CultureInfo.CurrentCulture));
+                        //}
                         else
                         {
                             cell.SetCellValue(value.ToString());
