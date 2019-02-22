@@ -1,8 +1,10 @@
-﻿using NPOI.SS.UserModel;
+﻿using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 
 namespace BlueColor.NPOIExtensions
@@ -138,14 +140,14 @@ namespace BlueColor.NPOIExtensions
                     var style = sheet.Workbook.genContentCellStyle();
 
                     var dataFormat = sheet.Workbook.CreateDataFormat();
-                    style.DataFormat = dataFormat.GetFormat(config.DataFormat);
-                    //style.DataFormat = HSSFDataFormat.GetBuiltinFormat(config.DataFormat);
+                    //style.DataFormat = dataFormat.GetFormat(config.DataFormat);
+                    style.DataFormat = HSSFDataFormat.GetBuiltinFormat(config.DataFormat);
                     cellStyles[config.ColumnIndex] = style;
                 }
 
                 var titleCell = titleRow.CreateCell(config.ColumnIndex);
-                titleCell.CellStyle = titleStyle;
                 titleCell.SetCellValue(config.Title);
+                titleCell.CellStyle = titleStyle;
             }
         }
 
@@ -184,7 +186,32 @@ namespace BlueColor.NPOIExtensions
                     if (cellStyles.TryGetValue(config.ColumnIndex, out var cellStyle))
                     {
                         cell.CellStyle = cellStyle;
-                        cell.SetCellValue(value.ToString());
+
+                        #region 处理单元格Value类型
+
+                        if (config.PropertyType == typeof(bool))
+                        {
+                            cell.SetCellValue((bool)value);
+                        }
+                        else if (config.PropertyType == typeof(DateTime))
+                        {
+                            cell.SetCellValue(Convert.ToDateTime(value));
+                        }
+                        else if (config.PropertyType == typeof(decimal) || config.PropertyType == typeof(double))
+                        {
+                            cell.SetCellValue(Convert.ToDouble(value));
+                        }
+                        else if (value is IFormattable)
+                        {
+                            var fv = value as IFormattable;
+                            cell.SetCellValue(fv.ToString(config.DataFormat, CultureInfo.CurrentCulture));
+                        }
+                        else
+                        {
+                            cell.SetCellValue(value.ToString());
+                        }
+
+                        #endregion 处理单元格Value类型
                     }
                     else
                     {

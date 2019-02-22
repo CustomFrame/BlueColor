@@ -10,6 +10,11 @@ namespace BlueColor.NPOIExtensions
     public class PropertyCellConfig
     {
         /// <summary>
+        /// 属性类型
+        /// </summary>
+        public Type PropertyType { get; set; } = typeof(string);
+
+        /// <summary>
         /// 属性名称
         /// </summary>
         public string PropertyName { get; set; }

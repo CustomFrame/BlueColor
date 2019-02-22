@@ -166,6 +166,11 @@
             属性单元格配置
             </summary>
         </member>
+        <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.PropertyType">
+            <summary>
+            属性类型
+            </summary>
+        </member>
         <member name="P:BlueColor.NPOIExtensions.PropertyCellConfig.PropertyName">
             <summary>
             属性名称

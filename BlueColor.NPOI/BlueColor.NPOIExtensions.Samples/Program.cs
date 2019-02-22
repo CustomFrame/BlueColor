@@ -59,11 +59,19 @@ namespace BlueColor.NPOIExtensions.Samples
             column.DefaultValue = 21;
             table.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = Type.GetType("System.Decimal");
+            column.Caption = "Growth";
+            column.ColumnName = "Growth";
+            column.DefaultValue = 0.21;
+            table.Columns.Add(column);
+
             for (int i = 0; i <= 10; i++)
             {
                 row = table.NewRow();
                 row["Name"] = "AA";
                 //row["Age"] = 21;
+                row["Growth"] = 0.21;
                 table.Rows.Add(row);
             }
             for (int i = 0; i <= 10; i++)
@@ -71,6 +79,7 @@ namespace BlueColor.NPOIExtensions.Samples
                 row = table.NewRow();
                 row["Name"] = "BB";
                 row["Age"] = 22;
+                row["Growth"] = 0.21;
                 table.Rows.Add(row);
             }
 
@@ -104,6 +113,17 @@ namespace BlueColor.NPOIExtensions.Samples
                 AllowMerge = true,
                 IsIgnored = false,
                 DataFormat = "0"
+            });
+            configs.Add(new PropertyCellConfig
+            {
+                PropertyType = typeof(decimal),
+                PropertyName = "Growth",
+                Title = "成长",
+                ColumnIndex = 2,
+                ConditionColumn = false,
+                AllowMerge = false,
+                IsIgnored = false,
+                DataFormat = "0.00%"
             });
 
             return configs;
