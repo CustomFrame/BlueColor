@@ -67,7 +67,6 @@ namespace BlueColor.NPOIExtensions
         /// <param name="sheet">工作表</param>
         /// <param name="singleRowCells">单行单元格-List</param>
         /// <param name="startRowNum">开始行号</param>
-        /// <param name="cellStyle">单元格式</param>
         /// <returns></returns>
         public static void AddSingleRowContentWithCellStyle(this ISheet sheet, List<RowCell> singleRowCells, int startRowNum = 1)
         {

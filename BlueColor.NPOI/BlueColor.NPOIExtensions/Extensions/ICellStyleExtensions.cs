@@ -11,7 +11,7 @@ namespace BlueColor.NPOIExtensions
         /// 设置 单元格 数据格式
         /// 默认
         /// </summary>
-        /// <param name="ICellStyle">单元格样式</param>
+        /// <param name="cellStyle">单元格样式</param>
         /// <param name="dataFormat">HSSFDataFormat.GetBuiltinFormat("@")</param>
         /// <returns></returns>
         public static ICellStyle setDataFormat(this ICellStyle cellStyle, short dataFormat)
