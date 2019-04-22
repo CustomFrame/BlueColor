@@ -14,7 +14,7 @@
             设置 单元格 数据格式
             默认
             </summary>
-            <param name="ICellStyle">单元格样式</param>
+            <param name="cellStyle">单元格样式</param>
             <param name="dataFormat">HSSFDataFormat.GetBuiltinFormat("@")</param>
             <returns></returns>
         </member>
@@ -64,7 +64,6 @@
             <param name="sheet">工作表</param>
             <param name="singleRowCells">单行单元格-List</param>
             <param name="startRowNum">开始行号</param>
-            <param name="cellStyle">单元格式</param>
             <returns></returns>
         </member>
         <member name="M:BlueColor.NPOIExtensions.ISheetExtensions.AddMultipleRowsContent(NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.String},System.Data.DataTable,System.Int32,NPOI.SS.UserModel.ICellStyle)">
