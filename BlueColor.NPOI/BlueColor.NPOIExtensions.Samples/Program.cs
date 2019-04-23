@@ -1,8 +1,10 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 
 namespace BlueColor.NPOIExtensions.Samples
 {
@@ -11,8 +13,12 @@ namespace BlueColor.NPOIExtensions.Samples
         private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            CreateWorkbook_HSSFWorkbook();
+            //CreateWorkbook_HSSFWorkbook();
+            //CreateWorkbook_HSSFWorkbook2();
+            CreateWorkbook_HSSFWorkbook3();
         }
+
+        #region 示例1
 
         /// <summary>
         /// HSSFWorkbook
@@ -29,10 +35,6 @@ namespace BlueColor.NPOIExtensions.Samples
                 dataTable: Program.GetDemoDataTable(),
                 startRowNum: 0
                 );
-
-            //FileStream sw = File.Create("test.xlsx");
-            //workbook.Write(sw);
-            //sw.Close();
 
             var isOk = workbook.createFileToWrite("test.xlsx");
             Console.WriteLine($"创建完成：{isOk.ToString()}.");
@@ -131,5 +133,92 @@ namespace BlueColor.NPOIExtensions.Samples
 
             return configs;
         }
+
+        #endregion
+
+        #region 示例2
+
+        /// <summary>
+        /// HSSFWorkbook
+        /// 创建工作簿
+        /// </summary>
+        public static void CreateWorkbook_HSSFWorkbook2()
+        {
+            IWorkbook workbook = new HSSFWorkbook();
+            var sheet1 = workbook.CreateSheet("Sheet1");
+
+            sheet1.AddMultipleRowsContentByList(null, genTestAList(), handleTestAProperty);
+
+            var isOk = workbook.createFileToWrite("test2.xlsx");
+            Console.WriteLine($"创建完成：{isOk.ToString()}.");
+        }
+
+        /// <summary>
+        /// HSSFWorkbook
+        /// 创建工作簿
+        /// </summary>
+        public static void CreateWorkbook_HSSFWorkbook3()
+        {
+            IWorkbook workbook = new HSSFWorkbook();
+            var sheet1 = workbook.CreateSheet("Sheet1");
+
+            sheet1.AddMultipleRowsByPropertyCellConfigByList(Program.GetDemoPropertyCellConfigs(), genTestAList(), handleTestAPropertyByPropertyCellConfigList);
+
+            var isOk = workbook.createFileToWrite("test3.xlsx");
+            Console.WriteLine($"创建完成：{isOk.ToString()}.");
+        }
+
+        /// <summary>
+        /// 生成 TestAList
+        /// </summary>
+        /// <returns></returns>
+        public static List<TestA> genTestAList()
+        {
+            var testAs = new List<TestA>() { };
+
+            testAs.Add(new TestA() { Name = "AA", Age = 21, Growth = 0.21m });
+            testAs.Add(new TestA() { Name = "AA", Age = 21, Growth = 0.21m });
+            testAs.Add(new TestA() { Name = "AA", Age = 21, Growth = 0.21m });
+            testAs.Add(new TestA() { Name = "AA", Age = 21, Growth = 0.21m });
+            testAs.Add(new TestA() { Name = "AA", Age = 21, Growth = 0.21m });
+
+            testAs.Add(new TestA() { Name = "BB", Age = 22, Growth = 0.22m });
+            testAs.Add(new TestA() { Name = "BB", Age = 22, Growth = 0.22m });
+            testAs.Add(new TestA() { Name = "BB", Age = 22, Growth = 0.22m });
+            testAs.Add(new TestA() { Name = "BB", Age = 22, Growth = 0.22m });
+            testAs.Add(new TestA() { Name = "BB", Age = 22, Growth = 0.22m });
+
+            return testAs;
+        }
+
+        /// <summary>
+        /// 处理 TestA 属性映射
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="startColNum"></param>
+        /// <param name="testA"></param>
+        /// <param name="cellStyle"></param>
+        public static void handleTestAProperty(IRow row, int startColNum, TestA testA, ICellStyle cellStyle)
+        {
+            row.bcSetCellValueByCellStyle(ref startColNum, testA.Name, cellStyle);
+            row.bcSetCellValueByCellStyle(ref startColNum, testA.Age, cellStyle);
+            row.bcSetCellValueByCellStyle(ref startColNum, testA.Growth.ToString(), cellStyle);
+        }
+
+        /// <summary>
+        /// 处理 TestA 属性映射
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="testA"></param>
+        /// <param name="propertyCellConfigs"></param>
+        /// <param name="cellStyles"></param>
+        public static void handleTestAPropertyByPropertyCellConfigList(IRow row, TestA testA, PropertyCellConfigList propertyCellConfigs, Dictionary<int, ICellStyle> cellStyles)
+        {
+            row.bcSetCellValueByConfig(testA.Name, propertyCellConfigs.GetConfigByName("Name"), cellStyles);
+            row.bcSetCellValueByConfig(testA.Age, propertyCellConfigs.GetConfigByName("Age"), cellStyles);
+            row.bcSetCellValueByConfig(Convert.ToDouble(testA.Growth), propertyCellConfigs.GetConfigByName("Growth"), cellStyles);
+        }
+
+        #endregion
     }
 }

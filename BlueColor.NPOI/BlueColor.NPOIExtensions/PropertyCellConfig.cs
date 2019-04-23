@@ -101,5 +101,16 @@ namespace BlueColor.NPOIExtensions
 
             // IsIgnored属性Bug影响未检验。
         }
+
+        /// <summary>
+        /// 获得属性单元格配置
+        /// </summary>
+        /// <param name="propertyName">属性名</param>
+        /// <returns></returns>
+        public PropertyCellConfig GetConfigByName(string propertyName)
+        {
+            return this.SingleOrDefault(p => p.PropertyName == propertyName);
+        }
+
     }
 }

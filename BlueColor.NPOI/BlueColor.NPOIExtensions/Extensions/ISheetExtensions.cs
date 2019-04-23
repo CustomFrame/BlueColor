@@ -4,7 +4,6 @@ using NPOI.SS.Util;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.Linq;
 
 namespace BlueColor.NPOIExtensions
@@ -14,6 +13,8 @@ namespace BlueColor.NPOIExtensions
     /// </summary>
     public static class ISheetExtensions
     {
+        #region 添加标题
+
         /// <summary>
         /// 添加单行标题
         /// (单行标题无合并单元格情况)
@@ -37,6 +38,48 @@ namespace BlueColor.NPOIExtensions
                 cell.CellStyle = cellStyle;
             }
         }
+
+        /// <summary>
+        /// 添加标题行-输出列样式
+        /// (按列-属性单元格配置)
+        /// </summary>
+        /// <param name="sheet">工作表</param>
+        /// <param name="propertyCellConfigs">属性单元格配置-List</param>
+        /// <param name="titleRowNum">标题行号</param>
+        /// <param name="cellStyles">输出列样式</param>
+        /// <returns></returns>
+        public static void AddTitleRowByPropertyCellConfig(this ISheet sheet, PropertyCellConfigList propertyCellConfigs, int titleRowNum, out Dictionary<int, ICellStyle> cellStyles)
+        {
+            propertyCellConfigs.ValidateError();
+
+            cellStyles = new Dictionary<int, ICellStyle>();
+
+            var titleStyle = sheet.Workbook.genHeaderCellStyle();
+            var titleRow = sheet.CreateRow(titleRowNum);
+            foreach (var config in propertyCellConfigs)
+            {
+                if (config.IsIgnored)
+                    continue;//
+
+                if (!string.IsNullOrWhiteSpace(config.DataFormat))
+                {
+                    var style = sheet.Workbook.genContentCellStyle();
+
+                    var dataFormat = sheet.Workbook.CreateDataFormat();
+                    //style.DataFormat = dataFormat.GetFormat(config.DataFormat);
+                    style.DataFormat = HSSFDataFormat.GetBuiltinFormat(config.DataFormat);
+                    cellStyles[config.ColumnIndex] = style;
+                }
+
+                var titleCell = titleRow.CreateCell(config.ColumnIndex);
+                titleCell.SetCellValue(config.Title);
+                titleCell.CellStyle = titleStyle;
+            }
+        }
+
+        #endregion 添加标题
+
+        #region 添加单行
 
         /// <summary>
         /// 添加单行内容
@@ -83,6 +126,10 @@ namespace BlueColor.NPOIExtensions
             }
         }
 
+        #endregion 添加单行
+
+        #region 添加多行
+
         /// <summary>
         /// 添加多行内容
         /// </summary>
@@ -113,41 +160,54 @@ namespace BlueColor.NPOIExtensions
         }
 
         /// <summary>
-        /// 添加标题行-输出列样式
-        /// (按列-属性单元格配置)
+        /// 添加多行内容
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="sheet">工作表</param>
-        /// <param name="propertyCellConfigs">属性单元格配置-List</param>
-        /// <param name="titleRowNum">标题行号</param>
-        /// <param name="cellStyles">输出列样式</param>
-        /// <returns></returns>
-        public static void AddTitleRowByPropertyCellConfig(this ISheet sheet, PropertyCellConfigList propertyCellConfigs, int titleRowNum, out Dictionary<int, ICellStyle> cellStyles)
+        /// <param name="columnNames">列名-List</param>
+        /// <param name="dataList">数据表</param>
+        /// <param name="actionA"></param>
+        /// <param name="startRowNum">开始行号</param>
+        /// <param name="cellStyle">单元格式</param>
+        public static void AddMultipleRowsContentByList<T>(this ISheet sheet, List<string> columnNames, List<T> dataList, Action<IRow, int, T, ICellStyle> actionA, int startRowNum = 1, ICellStyle cellStyle = null)
         {
-            propertyCellConfigs.ValidateError();
+            cellStyle = cellStyle ?? sheet.Workbook.genContentCellStyle();
 
-            cellStyles = new Dictionary<int, ICellStyle>();
-
-            var titleStyle = sheet.Workbook.genHeaderCellStyle();
-            var titleRow = sheet.CreateRow(titleRowNum);
-            foreach (var config in propertyCellConfigs)
+            foreach (var testA in dataList)
             {
-                if (config.IsIgnored)
-                    continue;//
+                IRow row = sheet.CreateRow(startRowNum++);
 
-                if (!string.IsNullOrWhiteSpace(config.DataFormat))
-                {
-                    var style = sheet.Workbook.genContentCellStyle();
+                var startColNum = 0;
 
-                    var dataFormat = sheet.Workbook.CreateDataFormat();
-                    //style.DataFormat = dataFormat.GetFormat(config.DataFormat);
-                    style.DataFormat = HSSFDataFormat.GetBuiltinFormat(config.DataFormat);
-                    cellStyles[config.ColumnIndex] = style;
-                }
-
-                var titleCell = titleRow.CreateCell(config.ColumnIndex);
-                titleCell.SetCellValue(config.Title);
-                titleCell.CellStyle = titleStyle;
+                actionA(row, startColNum, testA, cellStyle);
             }
+        }
+
+        /// <summary>
+        /// 添加多行内容
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sheet">工作表</param>
+        /// <param name="columnNames">列名-List</param>
+        /// <param name="dataList">数据表</param>
+        /// <param name="actionA"></param>
+        /// <param name="startRowNum">开始行号</param>
+        /// <param name="cellStyle">单元格式</param>
+        public static void AddMultipleRowsContentByList<T>(this ISheet sheet, List<string> columnNames, List<T> dataList, Action<IRow, int, T, ICellStyle, BcSetCellValueByCellStyleDelegate> actionA, int startRowNum = 1, ICellStyle cellStyle = null)
+        {
+            cellStyle = cellStyle ?? sheet.Workbook.genContentCellStyle();
+
+            foreach (var testA in dataList)
+            {
+                IRow row = sheet.CreateRow(startRowNum++);
+
+                var startColNum = 0;
+
+                BcSetCellValueByCellStyleDelegate actionB = row.bcSetCellValueByCellStyle;
+                actionA(row, startColNum, testA, cellStyle, actionB);
+            }
+
+            throw new NotImplementedException("此功能暂未实现");
         }
 
         /// <summary>
@@ -170,7 +230,7 @@ namespace BlueColor.NPOIExtensions
             var rowIndex = contentStartRowNum;
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                var row = sheet.CreateRow(rowIndex);
+                var row = sheet.CreateRow(rowIndex++);
 
                 foreach (var config in propertyCellConfigs)
                 {
@@ -218,7 +278,6 @@ namespace BlueColor.NPOIExtensions
                     }
                 }
 
-                rowIndex++;
             }
 
             sheet.MergeCellByPropertyCellConfig(propertyCellConfigs, contentStartRowNum, rowIndex);
@@ -228,6 +287,43 @@ namespace BlueColor.NPOIExtensions
                 sheet.AutoSizeColumn(i);
             }
         }
+
+        /// <summary>
+        /// 添加多行
+        /// (按列-属性单元格配置)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sheet">工作表</param>
+        /// <param name="propertyCellConfigs">属性单元格配置-List</param>
+        /// <param name="dataList">数据表</param>
+        /// <param name="actionA"></param>
+        /// <param name="startRowNum">开始行号</param>
+        /// <returns></returns>
+        public static void AddMultipleRowsByPropertyCellConfigByList<T>(this ISheet sheet, PropertyCellConfigList propertyCellConfigs, List<T> dataList, Action<IRow, T, PropertyCellConfigList, Dictionary<int, ICellStyle>> actionA, int startRowNum = 0)
+        {// 性能与功能取舍（合久必分；分久必合；）、拆分导致if语句多次判断性能问题、合并导致复杂度升高；
+            propertyCellConfigs.ValidateError();
+
+            sheet.AddTitleRowByPropertyCellConfig(propertyCellConfigs, startRowNum, out var cellStyles);
+
+            // 内容开始行号
+            var contentStartRowNum = startRowNum + 1;
+            var rowIndex = contentStartRowNum;
+            foreach (var testA in dataList)
+            {
+                var row = sheet.CreateRow(rowIndex++);
+
+                actionA(row, testA, propertyCellConfigs, cellStyles);
+            }
+
+            sheet.MergeCellByPropertyCellConfig(propertyCellConfigs, contentStartRowNum, rowIndex);
+
+            for (int i = 0; i < propertyCellConfigs.Count; i++)
+            {
+                sheet.AutoSizeColumn(i);
+            }
+        }
+
+        #endregion 添加多行
 
         /// <summary>
         /// 合并单元格
