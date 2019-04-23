@@ -1,5 +1,6 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using System.IO;
 
 namespace BlueColor.NPOIExtensions
 {
@@ -89,6 +90,28 @@ namespace BlueColor.NPOIExtensions
             font.Boldweight = (short)fontBoldWeight;
 
             return font;
+        }
+
+        /// <summary>
+        /// 创建文件去写入
+        /// </summary>
+        /// <param name="workbook">工作簿</param>
+        /// <param name="filePath">文件路径</param>
+        /// <returns></returns>
+        public static bool createFileToWrite(this IWorkbook workbook, string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                return false;
+            }
+            else
+            {
+                using (FileStream fs = File.Create(filePath))
+                {
+                    workbook.Write(fs);
+                }
+                return true;
+            }
         }
     }
 }

@@ -30,9 +30,12 @@ namespace BlueColor.NPOIExtensions.Samples
                 startRowNum: 0
                 );
 
-            FileStream sw = File.Create("test.xlsx");
-            workbook.Write(sw);
-            sw.Close();
+            //FileStream sw = File.Create("test.xlsx");
+            //workbook.Write(sw);
+            //sw.Close();
+
+            var isOk = workbook.createFileToWrite("test.xlsx");
+            Console.WriteLine($"创建完成：{isOk.ToString()}.");
         }
 
         /// <summary>

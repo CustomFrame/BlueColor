@@ -160,6 +160,14 @@
             <param name="fontBoldWeight">字体粗体重量</param>
             <returns></returns>
         </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.createFileToWrite(NPOI.SS.UserModel.IWorkbook,System.String)">
+            <summary>
+            创建文件去写入
+            </summary>
+            <param name="workbook">工作簿</param>
+            <param name="filePath">文件路径</param>
+            <returns></returns>
+        </member>
         <member name="T:BlueColor.NPOIExtensions.PropertyCellConfig">
             <summary>
             属性单元格配置
