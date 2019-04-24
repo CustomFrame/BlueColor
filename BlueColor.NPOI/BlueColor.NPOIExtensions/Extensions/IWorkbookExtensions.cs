@@ -9,6 +9,8 @@ namespace BlueColor.NPOIExtensions
     /// </summary>
     public static class IWorkbookExtensions
     {
+        #region 生成 单元格样式
+
         /// <summary>
         /// 生成 标题单元格样式
         /// 默认
@@ -58,6 +60,10 @@ namespace BlueColor.NPOIExtensions
             return cellStyle;
         }
 
+        #endregion 生成 单元格样式
+
+        #region 生成 字体
+
         /// <summary>
         /// 生成 字体-粗体
         /// </summary>
@@ -91,6 +97,33 @@ namespace BlueColor.NPOIExtensions
 
             return font;
         }
+
+        #endregion 生成 字体
+
+        #region 生成-工作表
+
+        /// <summary>
+        /// 生成-默认工作表
+        /// </summary>
+        /// <param name="workbook">工作簿</param>
+        /// <returns></returns>
+        public static ISheet genSheetDefault(this IWorkbook workbook)
+        {
+            return workbook.CreateSheet("Sheet1");
+        }
+
+        /// <summary>
+        /// 生成-工作表
+        /// </summary>
+        /// <param name="workbook">工作簿</param>
+        /// <param name="sheetName">工作表名称</param>
+        /// <returns></returns>
+        public static ISheet genSheet(this IWorkbook workbook, string sheetName)
+        {
+            return workbook.CreateSheet(sheetName);
+        }
+
+        #endregion 生成-工作表
 
         /// <summary>
         /// 创建文件去写入

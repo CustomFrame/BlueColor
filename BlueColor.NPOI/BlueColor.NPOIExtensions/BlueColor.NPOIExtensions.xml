@@ -313,6 +313,21 @@
             <param name="fontBoldWeight">字体粗体重量</param>
             <returns></returns>
         </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.genSheetDefault(NPOI.SS.UserModel.IWorkbook)">
+            <summary>
+            生成-默认工作表
+            </summary>
+            <param name="workbook">工作簿</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.genSheet(NPOI.SS.UserModel.IWorkbook,System.String)">
+            <summary>
+            生成-工作表
+            </summary>
+            <param name="workbook">工作簿</param>
+            <param name="sheetName">工作表名称</param>
+            <returns></returns>
+        </member>
         <member name="M:BlueColor.NPOIExtensions.IWorkbookExtensions.createFileToWrite(NPOI.SS.UserModel.IWorkbook,System.String)">
             <summary>
             创建文件去写入

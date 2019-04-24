@@ -160,9 +160,8 @@ namespace BlueColor.NPOIExtensions.Samples
         public static void CreateWorkbook_HSSFWorkbook3()
         {
             IWorkbook workbook = new HSSFWorkbook();
-            var sheet1 = workbook.CreateSheet("Sheet1");
 
-            sheet1.AddMultipleRowsByPropertyCellConfigByList(Program.GetDemoPropertyCellConfigs(), genTestAList(), handleTestAPropertyByPropertyCellConfigList);
+            workbook.genSheetDefault().AddMultipleRowsByPropertyCellConfigByList(Program.GetDemoPropertyCellConfigs(), genTestAList(), handleTestAPropertyByPropertyCellConfigList);
 
             var isOk = workbook.createFileToWrite("test3.xlsx");
             Console.WriteLine($"创建完成：{isOk.ToString()}.");
