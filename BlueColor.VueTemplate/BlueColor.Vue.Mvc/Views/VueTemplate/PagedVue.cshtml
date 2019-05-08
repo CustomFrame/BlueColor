@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "PagedVue";
+}
+
+<h1>PagedVue</h1>
+
+<div id="app">
+
+    <el-container>
+        <el-main style="text-align:center">
+            <el-pagination @@size-change="handleSizeChange"
+                           @@current-change="handleCurrentChange"
+                           :current-page="currentPage"
+                           :page-sizes="[100, 200, 300, 400]"
+                           :page-size="pageSize"
+                           layout="total, sizes, prev, pager, next, jumper"
+                           :total="total">
+            </el-pagination>
+        </el-main>
+    </el-container>
+
+</div>
+
+<script>
+
+    /**分页混入对象 */
+    var pageMixin = {
+        data: {
+            currentPage: 1,
+            pageSize: 100,
+            total: 400,
+        },
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            },
+            hello: function () {
+                console.log('hello from pageMixin!')
+            }
+        },
+        created: function () {
+            this.hello()
+        },
+    }
+
+    var Main = {
+        el: '#app',
+        mixins: [pageMixin],
+    };
+
+    var app = new Vue(Main);
+
+</script>

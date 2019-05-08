@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BlueColor.Vue.Mvc</title>
+
+    @Html.Partial("_BcVuejs")
+
+</head>
+<body>
+
+    @Html.Partial("_BcHeader")
+
+    @RenderBody()
+
+    @Html.Partial("_BcFooter")
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

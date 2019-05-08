@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="app">
+
+    <el-container>
+        <el-main>
+            {{ message }}
+            <template>
+                <el-table :data="tableData" style="width: 100%">
+                    <el-table-column prop="date" label="日期" width="180"></el-table-column>
+                    <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+                    <el-table-column prop="address" label="地址"></el-table-column>
+                </el-table>
+            </template>
+        </el-main>
+    </el-container>
+
+</div>
+
+<script>
+    var Main = {
+        el: '#app',
+        data: {
+            message: 'Hello World!'
+        },
+        computed: {
+            testComputed() {
+                return this.data
+            }
+        },
+        methods: {
+            testMehtod() {
+
+            }
+        },
+        beforeCreate() {
+            console.log('vue-beforeCreate');
+        },
+        created() {
+            console.log('vue-created');
+        },
+        beforeMount() {
+            console.log('vue-beforeMount');
+        },
+        mounted() {
+            console.log('vue-mounted');
+        },
+        beforeUpdate() {
+            console.log('vue-beforeUpdate');
+        },
+        updated() {
+            console.log('vue-updated');
+        },
+        beforeDestroy() {
+            console.log('vue-beforeDestroy');
+        },
+        destroyed() {
+            console.log('vue-destroyed');
+        }
+    };
+
+    var app = new Vue(Main);
+
+</script>
+

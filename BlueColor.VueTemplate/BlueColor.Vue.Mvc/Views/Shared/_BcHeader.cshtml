@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div id="BcHeader">
+
+    <el-container>
+        <el-header style="text-align: center;">
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @@select="handleSelect"
+                     background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                <el-menu-item index="1">BlueColor-VueTemplate</el-menu-item>
+                <el-menu-item index="2">@Html.ActionLink("Index", "Index", "VueTemplate")</el-menu-item>
+                <el-menu-item index="3">@Html.ActionLink("DoubleVue", "DoubleVue", "VueTemplate") </el-menu-item>
+                <el-menu-item index="4">@Html.ActionLink("PagedVue", "PagedVue", "VueTemplate") </el-menu-item>
+
+                <el-submenu index="5">
+                    <template slot="title">
+                        表格系列
+                    </template>
+                    <el-menu-item index="5-1"> @Html.ActionLink("基础表格", "TableVue", "VueTemplate")</el-menu-item>
+                    <el-menu-item index="5-2"> @Html.ActionLink("带斑马纹表格", "TableVueByStripe", "VueTemplate")</el-menu-item>
+                    <el-menu-item index="5-3"> @Html.ActionLink("带边框表格", "TableVueByBorder", "VueTemplate")</el-menu-item>
+                    <el-menu-item index="5-4"> @Html.ActionLink("带状态表格", "TableVueByRowClassName", "VueTemplate")</el-menu-item>
+
+                    @*<el-menu-item index="5-5"> @Html.ActionLink("TableVue", "TableVue", "VueTemplate")</el-menu-item>*@
+                </el-submenu>
+
+                <el-menu-item index="5">
+
+
+                   
+                </el-menu-item>
+                <el-menu-item index="0" disabled>消息中心</el-menu-item>
+            </el-menu>
+        </el-header>
+    </el-container>
+
+</div>
+
+<script>
+
+    var vm1 = new Vue({
+
+        el: "#BcHeader",
+        data: {
+            activeIndex: '1'
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    });
+
+</script>

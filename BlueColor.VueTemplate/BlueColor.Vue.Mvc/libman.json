@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "vue@2.6.10",
+      "destination": "wwwroot/lib/vue/",
+      "files": [
+        "vue.min.js",
+        "vue.js"
+      ]
+    },
+    {
+      "library": "moment.js@2.24.0",
+      "destination": "wwwroot/lib/moment.js/",
+      "files": [
+        "moment.min.js",
+        "moment.js",
+        "locale/zh-cn.js",
+        "moment-with-locales.min.js",
+        "moment-with-locales.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "axios@0.18.0",
+      "destination": "wwwroot/lib/axios/",
+      "files": [
+        "axios.min.js",
+        "axios.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "lodash.js@4.17.11",
+      "destination": "wwwroot/lib/lodash.js/",
+      "files": [
+        "lodash.min.js",
+        "lodash.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "element-ui@2.8.2",
+      "destination": "wwwroot/lib/element-ui/",
+      "files": [
+        "index.js",
+        "theme-chalk/index.css",
+        "theme-chalk/fonts/element-icons.ttf",
+        "theme-chalk/fonts/element-icons.woff",
+        "locale/zh-CN.min.js"
+      ]
+    }
+  ]
+}
