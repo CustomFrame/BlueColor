@@ -4,6 +4,11 @@
 }
 
 
+@section CSS {
+    <style>
+    </style>
+}
+
 <div id="app1">
     <el-container>
         <el-main>
@@ -33,26 +38,27 @@
     </el-container>
 </div>
 
-<script>
+@section Script{
+    <script>
 
-    var vm1 = new Vue({
+        var vm1 = new Vue({
 
-        el: "#app1",
-        data: {
-            message: 'app1!'
-        },
+            el: "#app1",
+            data: {
+                message: 'app1!'
+            },
 
-    });
+        });
 
-    var vm2 = new Vue({
+        var vm2 = new Vue({
 
-        el: "#app2",
-        data: {
-            message: 'app2!'
-        },
+            el: "#app2",
+            data: {
+                message: 'app2!'
+            },
 
-    });
+        });
 
-</script>
-
+    </script>
+}
 

@@ -2,6 +2,11 @@
     ViewData["Title"] = "PagedVue";
 }
 
+@section CSS {
+    <style>
+    </style>
+}
+
 <h1>PagedVue</h1>
 
 <div id="app">
@@ -21,36 +26,38 @@
 
 </div>
 
-<script>
+@section Script{
+    <script>
 
-    /**分页混入对象 */
-    var pageMixin = {
-        data: {
-            currentPage: 1,
-            pageSize: 100,
-            total: 400,
-        },
-        methods: {
-            handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
+        /**分页混入对象 */
+        var pageMixin = {
+            data: {
+                currentPage: 1,
+                pageSize: 100,
+                total: 400,
             },
-            handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
+            methods: {
+                handleSizeChange(val) {
+                    console.log(`每页 ${val} 条`);
+                },
+                handleCurrentChange(val) {
+                    console.log(`当前页: ${val}`);
+                },
+                hello: function () {
+                    console.log('hello from pageMixin!')
+                }
             },
-            hello: function () {
-                console.log('hello from pageMixin!')
-            }
-        },
-        created: function () {
-            this.hello()
-        },
-    }
+            created: function () {
+                this.hello()
+            },
+        }
 
-    var Main = {
-        el: '#app',
-        mixins: [pageMixin],
-    };
+        var Main = {
+            el: '#app',
+            mixins: [pageMixin],
+        };
 
-    var app = new Vue(Main);
+        var app = new Vue(Main);
 
-</script>
+    </script>
+}

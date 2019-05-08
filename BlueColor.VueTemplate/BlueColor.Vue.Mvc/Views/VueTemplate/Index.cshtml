@@ -3,6 +3,11 @@
     ViewData["Title"] = "Index";
 }
 
+@section CSS {
+    <style>
+    </style>
+}
+
 <div id="app">
 
     <el-container>
@@ -19,50 +24,50 @@
     </el-container>
 
 </div>
+@section Script{
+    <script>
+        var Main = {
+            el: '#app',
+            data: {
+                message: 'Hello World!'
+            },
+            computed: {
+                testComputed() {
+                    return this.data
+                }
+            },
+            methods: {
+                testMehtod() {
 
-<script>
-    var Main = {
-        el: '#app',
-        data: {
-            message: 'Hello World!'
-        },
-        computed: {
-            testComputed() {
-                return this.data
+                }
+            },
+            beforeCreate() {
+                console.log('vue-beforeCreate');
+            },
+            created() {
+                console.log('vue-created');
+            },
+            beforeMount() {
+                console.log('vue-beforeMount');
+            },
+            mounted() {
+                console.log('vue-mounted');
+            },
+            beforeUpdate() {
+                console.log('vue-beforeUpdate');
+            },
+            updated() {
+                console.log('vue-updated');
+            },
+            beforeDestroy() {
+                console.log('vue-beforeDestroy');
+            },
+            destroyed() {
+                console.log('vue-destroyed');
             }
-        },
-        methods: {
-            testMehtod() {
+        };
 
-            }
-        },
-        beforeCreate() {
-            console.log('vue-beforeCreate');
-        },
-        created() {
-            console.log('vue-created');
-        },
-        beforeMount() {
-            console.log('vue-beforeMount');
-        },
-        mounted() {
-            console.log('vue-mounted');
-        },
-        beforeUpdate() {
-            console.log('vue-beforeUpdate');
-        },
-        updated() {
-            console.log('vue-updated');
-        },
-        beforeDestroy() {
-            console.log('vue-beforeDestroy');
-        },
-        destroyed() {
-            console.log('vue-destroyed');
-        }
-    };
+        var app = new Vue(Main);
 
-    var app = new Vue(Main);
-
-</script>
-
+    </script>
+}
