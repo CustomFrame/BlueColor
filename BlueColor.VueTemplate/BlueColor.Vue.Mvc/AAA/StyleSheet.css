@@ -1,0 +1,22 @@
+﻿body {
+    margin: 1px;
+    padding: 1em;
+    border: none;
+    transition: ease;
+}
+
+:-webkit-full-screen a {
+    display: flex
+}
+
+:-moz-full-screen a {
+    display: flex
+}
+
+:-ms-fullscreen a {
+    display: flex
+}
+
+:fullscreen a {
+    display: flex
+}

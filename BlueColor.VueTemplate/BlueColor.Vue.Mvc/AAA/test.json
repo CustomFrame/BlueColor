@@ -1,0 +1,6 @@
+{ // Single-line comment
+  "foo": { /*        multi        line        comment        */
+    "prop": 12
+
+  }
+}
