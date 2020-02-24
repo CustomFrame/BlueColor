@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>BlueColor</Authors>
+    <Copyright>214909012@qq.com</Copyright>
+    <Description>实体接口 实体基类 审计接口 审计基类</Description>
+    <PackageProjectUrl>https://github.com/CustomFrame/BlueColor</PackageProjectUrl>
+    <PackageTags>BlueColor Bc Domain Entity Audited</PackageTags>
+    <NeutralLanguage>zh-CN</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>
